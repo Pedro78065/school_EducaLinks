@@ -254,7 +254,7 @@ Projeto desenvolvido por:
 
 - Pedro H.C
 
-Grupo:
+Grupo para apresentação do tabalho:
 
 - Pedro H.C
 - Tewei K
