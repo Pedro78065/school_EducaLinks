@@ -238,37 +238,6 @@ Atualmente:
 
 ---
 
-# Melhorias Futuras
-
-## Backend
-
-- Node.js
-- Python Flask
-- FastAPI
-
----
-
-## Banco de Dados
-
-- MySQL
-- PostgreSQL
-- Firebase
-
----
-
-## Novas Funcionalidades
-
-- Login de professores
-- Upload de arquivos
-- Upload de PDF
-- Sistema de turmas
-- Sistema de notas
-- Chat escolar
-- Integração com IA
-- Sistema de QR Code automático
-
----
-
 # Segurança
 
 O projeto possui:
