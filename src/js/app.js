@@ -1,123 +1,150 @@
-import {
-    salvarAtividades,
-    carregarAtividades
-}
-from "./storage.js";
+
+import { db } from "./firebase.js";
+import { login, logout, auth, onAuthStateChanged } from "./auth.js";
 
 import {
-    validarCampos
+    collection,
+    addDoc,
+    onSnapshot,
+    deleteDoc,
+    doc,
+    updateDoc,
+    getDoc,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+
+/* =========================
+   ELEMENTOS
+========================= */
+
+const lista = document.getElementById("lista_links");
+const botaoAdicionar = document.getElementById("adicionar");
+const loginBtn = document.getElementById("login_btn");
+const logoutBtn = document.getElementById("logout_btn");
+
+/* =========================
+   FIRESTORE
+========================= */
+
+const atividadesRef = collection(db, "atividades");
+
+/* =========================
+   ESTADO (SÓ UI)
+========================= */
+
+let isLogged = false;
+
+/* =========================
+   AUTH
+========================= */
+
+loginBtn.addEventListener("click", login);
+logoutBtn.addEventListener("click", logout);
+
+/* =========================
+   CRIAR USER (SE NÃO EXISTE)
+========================= */
+
+async function criarUsuarioSeNaoExistir(user) {
+
+    const ref = doc(db, "users", user.uid);
+    const snap = await getDoc(ref);
+
+    if (!snap.exists()) {
+        await setDoc(ref, {
+            role: "aluno"
+        });
+    }
 }
-from "./validation.js";
 
-import {
-    criarCard
-}
-from "./ui.js";
+/* =========================
+   AUTH LISTENER
+========================= */
 
-const botao =
-    document.getElementById("adicionar");
+onAuthStateChanged(auth, async (user) => {
 
-const lista =
-    document.getElementById("lista_links");
-
-let atividades =
-    carregarAtividades();
-
-renderizar();
-
-botao.addEventListener(
-    "click",
-    adicionarAtividade
-);
-
-function adicionarAtividade(){
-
-    const titulo =
-        document.getElementById("titulo");
-
-    const materia =
-        document.getElementById("materia");
-
-    const link =
-        document.getElementById("link");
-
-    if(
-        !validarCampos(
-            titulo.value,
-            materia.value,
-            link.value
-        )
-    ){
+    if (!user) {
+        isLogged = false;
+        document.body.classList.remove("logado");
         return;
     }
 
-    const atividade = {
+    isLogged = true;
 
-        id:Date.now(),
+    await criarUsuarioSeNaoExistir(user);
 
-        titulo:
-            titulo.value.trim(),
+    document.body.classList.add("logado");
+});
 
-        materia:
-            materia.value.trim(),
+/* =========================
+   CREATE
+========================= */
 
-        link:
-            link.value.trim()
-    };
+botaoAdicionar.addEventListener("click", async () => {
 
-    const duplicado =
-        atividades.some(
-            item =>
-                item.link === atividade.link
-        );
+    if (!isLogged) return;
 
-    if(duplicado){
+    const titulo = document.getElementById("titulo").value.trim();
+    const materia = document.getElementById("materia").value.trim();
+    const link = document.getElementById("link").value.trim();
 
-        alert(
-            "Essa atividade já foi adicionada."
-        );
-
+    if (!titulo || !materia || !link) {
+        alert("Preencha todos os campos.");
         return;
     }
 
-    atividades.push(atividade);
+    await addDoc(atividadesRef, {
+        titulo,
+        materia,
+        link
+    });
 
-    salvarAtividades(atividades);
+    document.getElementById("titulo").value = "";
+    document.getElementById("materia").value = "";
+    document.getElementById("link").value = "";
+});
 
-    renderizar();
+/* =========================
+   READ
+========================= */
 
-    titulo.value = "";
-
-    materia.value = "";
-
-    link.value = "";
-}
-
-function removerAtividade(id){
-
-    atividades =
-        atividades.filter(
-            atividade =>
-                atividade.id !== id
-        );
-
-    salvarAtividades(atividades);
-
-    renderizar();
-}
-
-function renderizar(){
+onSnapshot(atividadesRef, (snapshot) => {
 
     lista.innerHTML = "";
 
-    atividades.forEach(atividade => {
+    snapshot.forEach((item) => {
 
-        const card =
-            criarCard(
-                atividade,
-                removerAtividade
-            );
+        const data = item.data();
+
+        const card = document.createElement("div");
+        card.classList.add("atividade");
+
+        card.innerHTML = `
+            <h3>${data.titulo}</h3>
+            <p>${data.materia}</p>
+
+            <div class="botoes_card">
+                <a href="${data.link}" target="_blank">Abrir</a>
+
+                <button class="editar">Editar</button>
+                <button class="remover">Remover</button>
+            </div>
+        `;
+
+        card.querySelector(".remover").addEventListener("click", async () => {
+            await deleteDoc(doc(db, "atividades", item.id));
+        });
+
+        card.querySelector(".editar").addEventListener("click", async () => {
+
+            const novoTitulo = prompt("Novo título:", data.titulo);
+            if (!novoTitulo) return;
+
+            await updateDoc(doc(db, "atividades", item.id), {
+                titulo: novoTitulo
+            });
+        });
 
         lista.appendChild(card);
     });
-}
+});
