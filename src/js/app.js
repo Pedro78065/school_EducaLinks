@@ -81,7 +81,7 @@ onAuthStateChanged(auth, async (user) => {
 ========================= */
 
 botaoAdicionar.addEventListener("click", async () => {
-
+    alert("Apenas professores podem adicionar links, deletar e editar")
     if (!isLogged) return;
 
     const titulo = document.getElementById("titulo").value.trim();

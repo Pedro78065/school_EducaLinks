@@ -218,6 +218,12 @@ img{
 
     text-shadow:
         0px 0px 10px rgba(56,189,248,0.5);
+
+    transition: transform 0.5s;
+}
+
+.titulo_secao:hover{
+    transform:scale(0.80);
 }
 
 /* =========================
@@ -494,6 +500,8 @@ img{
 
     border:none;
 
+    margin:20px;
+
     border-radius:15px;
 
     cursor:pointer;
@@ -508,8 +516,12 @@ img{
             #00bfff,
             #2563eb
         );
-
+    box-shadow:5px 5px 20px black;
     transition:0.3s;
+}
+.bt_adicionar{
+    display:flex;
+    justify-content: center;
 }
 
 #adicionar:hover{
@@ -519,6 +531,8 @@ img{
 
     box-shadow:
         0px 0px 20px rgba(0,191,255,0.6);
+
+    
 }
 
 /* =========================
@@ -722,6 +736,16 @@ img{
    BOTÕES LOGIN / LOGOUT
 ========================= */
 
+.paragrafo_login{
+    text-align:center;
+    color:white;
+    text-shadow:2px 2px 5px white, 3px 3px 20px blue;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.div_paragrafo_login{
+
+}
+
 .auth_area{
     display:flex;
     justify-content:center;
@@ -743,7 +767,8 @@ img{
 
     transition:0.25s ease;
 
-    box-shadow:0px 8px 20px rgba(0,0,0,0.3);
+    box-shadow:0px 8px 20px rgba(0,0,0,0.3), 1px 1px 10px blue, 2px 2px 20px white;
+    
 }
 
 /* LOGIN */
