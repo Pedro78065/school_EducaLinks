@@ -718,9 +718,7 @@ img{
 }
 
 .editar,
-.remover,
-#adicionar,
-.auth_area button {
+.remover {
     display: none;
 }
 /* =========================
