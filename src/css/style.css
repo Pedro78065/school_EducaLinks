@@ -217,7 +217,7 @@ img{
     color:#38bdf8;
 
     text-shadow:
-        0px 0px 10px rgba(56,189,248,0.5);
+        0px 0px 10px rgba(56,189,248,0.5), 2px 2px 1px black, 2px 2px 10px white;
 
     transition: transform 0.5s;
 }
@@ -400,44 +400,6 @@ img{
 
     box-shadow:
         0px 0px 15px rgba(0,191,255,0.5);
-}
-
-/* =========================
-   IMAGENS DOS CARDS
-========================= */
-
-.div_IA_IMG,
-.div_gameficacao_img,
-.div_ensino_digital_img,
-.div_qrcode_img{
-    width:100%;
-
-    height:220px;
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    background:#111827;
-}
-
-.IA_IMG,
-.gameficacao_img,
-.ensino_digital_img,
-.qrcode_img{
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    transition:0.4s;
-}
-
-.card:hover .IA_IMG,
-.card:hover .gameficacao_img,
-.card:hover .ensino_digital_img,
-.card:hover .qrcode_img{
-    transform:scale(1.08);
 }
 
 /* =========================
@@ -674,10 +636,26 @@ img{
     color:#cbd5e1;
 }
 
+.div_rodape{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+}
+
 .rodape{
     color:#38bdf8 !important;
 
     font-weight:bold;
+
+}
+
+.grupo_rodape{
+    font-size:10px;
+}
+
+.direito_autoral{
+    color:yellow !important;
+    text-shadow: 2px 2px 5px red;
 }
 
 /* =========================
@@ -742,9 +720,6 @@ img{
     text-shadow:2px 2px 5px white, 3px 3px 20px blue;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
-.div_paragrafo_login{
-
-}
 
 .auth_area{
     display:flex;
@@ -803,4 +778,130 @@ body.logado #logout_btn{
 
 body:not(.logado) #login_btn{
     display:block;
+}
+
+/* =========================
+   IMAGENS DOS CARDS
+========================= */
+
+.div_IA_IMG,
+.div_gameficacao_img,
+.div_ensino_digital_img,
+.div_qrcode_img{
+    overflow:hidden;
+
+    background:#111827;
+}
+
+.IA_IMG,
+.gameficacao_img,
+.ensino_digital_img,
+.qrcode_img{
+    transition:0.4s, border-radius 0.4s;
+}
+
+.card:hover .IA_IMG,
+.card:hover .gameficacao_img,
+.card:hover .ensino_digital_img,
+.card:hover .qrcode_img{
+    transform:scale(1.04);
+    border-radius: 50px;
+}
+
+.div_IA_IMG{
+    display: flex;
+    justify-content: center;
+}
+
+.IA_IMG{
+    width:200px;
+    height:auto;
+    border-radius:20px;
+    margin:5px;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    flex-wrap:wrap;
+    box-shadow:3px 3px 6px blue;
+    transition: 0.4s;
+}
+
+.IA_IMG:hover{
+    box-shadow:3px 3px 6px rgba(0, 0, 0, 0.384);
+}
+
+.div_gameficacao_img{
+    display: flex;
+    justify-content: center;
+}
+
+.gameficacao_img{
+    width:200px;
+    height:200px;
+    border-radius:20px;
+    margin:5px;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    flex-wrap:wrap;
+    box-shadow:3px 3px 6px purple;
+    transition: 0.4s;
+}
+
+.gameficacao_img:hover{
+    box-shadow:3px 3px 6px rgba(0, 0, 0, 0.384);
+}
+
+.div_ensino_digital_img{
+    display: flex;
+    justify-content: center;
+}
+
+.ensino_digital_img{
+    width:200px;
+    height:200px;
+    border-radius:20px;
+    margin:5px;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    flex-wrap:wrap;
+    box-shadow:3px 3px 6px blue;
+    transition: 0.4s;
+}
+
+.ensino_digital_img:hover{
+    box-shadow:3px 3px 6px rgba(0, 0, 0, 0.384);
+}
+
+.div_qrcode_img{
+    display: flex;
+    justify-content: center;
+}
+
+.qrcode_img{
+    width:200px;
+    height:auto;
+    border-radius:20px;
+    margin:5px;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    flex-wrap:wrap;
+    box-shadow:3px 3px 6px purple;
+    transition: 0.4s;
+}
+
+.qrcode_img:hover{
+    box-shadow:3px 3px 6px rgba(0, 0, 0, 0.384);
+}
+
+.div_card{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    
+
 }
