@@ -21,6 +21,7 @@ O principal objetivo do EducaLinks é demonstrar como a tecnologia pode transfor
 - Dinâmico
 - Inteligente
 - Divertido
+- Profissional
 
 O sistema funciona como uma:
 
@@ -38,9 +39,13 @@ onde atividades podem ser adicionadas e acessadas rapidamente pelos alunos.
 - CSS3
 - JavaScript ES6 Modules
 
+## BackEND
+
+- Firebase
+
 ## Armazenamento
 
-- LocalStorage
+- firebase
 
 ---
 
@@ -52,7 +57,7 @@ onde atividades podem ser adicionadas e acessadas rapidamente pelos alunos.
 - Salvar atividades automaticamente
 - Remover atividades
 - Validação de links
-- Persistência local usando LocalStorage
+- Percistencia de dados via banco + firebase
 
 ---
 
@@ -116,7 +121,8 @@ EducaLinks/
 │   │
 │   └── js/
 │       ├── app.js
-│       ├── storage.js
+│       ├── auth.js
+│       ├── firebase.js
 │       ├── ui.js
 │       └── validation.js
 │
@@ -134,16 +140,7 @@ Responsável por:
 - Controlar o sistema principal
 - Adicionar atividades
 - Renderizar cards
-- Remover atividades
-
----
-
-## storage.js
-
-Responsável pelo:
-
-- Salvamento no LocalStorage
-- Carregamento automático das atividades
+- Remover atividades e etc...
 
 ---
 
@@ -215,43 +212,31 @@ Open with Live Server
 
 O sistema utiliza:
 
-```txt
-LocalStorage
-```
+* firebase
 
 Isso significa que:
 
-- As atividades ficam salvas no navegador
-- Não é necessário backend
-- Não é necessário banco de dados externo
-
----
-
-# Limitações do Projeto
-
-Atualmente:
-
-- Os dados são salvos apenas localmente
-- Não existe login
-- Não existe sincronização online
-- Cada navegador possui seus próprios dados
+- As atividades ficam salvas no banco de dados que fica no backEND
 
 ---
 
 # Segurança
 
-O projeto possui:
+- cryptography and firebase
 
-- Validação básica de campos
-- Validação de URL
-- Controle de duplicação de links
+---
+
+#### Escola: Santissíma Trindade (Iúna, ES).
+#### Aluno: Pedro.H.C
+#### Data: 25/05/2026.
+* projeto criado por "Pedro.H.C" com a finalidade de uso profissional.
 
 ---
 
 # Autor
 
-Projeto desenvolvido por:
-
+# Projeto desenvolvido(feito) por:
+"Aluno":
 - Pedro H.C
 
 Grupo para apresentação do tabalho:
