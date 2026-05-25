@@ -236,7 +236,7 @@ Isso significa que:
 # Autor
 
 # Projeto desenvolvido(feito) por:
-"Aluno":
+"Aluno/criador":
 - Pedro H.C
 
 Grupo para apresentação do tabalho:
