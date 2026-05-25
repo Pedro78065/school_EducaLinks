@@ -1,22 +1,22 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    apiKey: "AIzaSyBTOjmVD31ugBlktc4gTspP6xXp0O4H5kw",
 
-    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    authDomain: "educalink05.firebaseapp.com",
 
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    projectId: "educalink05",
 
-    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    storageBucket: "educalink05.firebasestorage.app",
 
-    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    messagingSenderId: "542318846591",
 
-    appId: import.meta.env.VITE_FIREBASE_APP_ID
+    appId: "1:542318846591:web:6e05c7d059893c6008154a"
+
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
 export { app, db };
