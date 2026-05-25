@@ -246,7 +246,7 @@ Grupo para apresentação do tabalho:
 - Elizeu
 - Ycaro
 - Nicolas
-- valor: 10 Pontos + mérito de criação e credibilidade com prof de português
+- valor: 10 Pontos + mérito de criação e credibilidade com prof de português/escola
 
 ---
 
